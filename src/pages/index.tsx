@@ -1,5 +1,9 @@
 import { useRouter } from 'next/router';
 
+import { GetServerSideProps } from 'next';
+import { getServerSession } from 'next-auth';
+import { authOptions } from './api/auth/[...nextauth]';
+
 import { useForm, FieldValues } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
@@ -8,7 +12,22 @@ import { z } from 'zod';
 
 import { signIn } from 'next-auth/react';
 
-import Auth from '@/layouts/Auth';
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const session = await getServerSession(req, res, authOptions);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: `/me`,
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
 
 const signInValidationSchema = z.object({
   email: z
