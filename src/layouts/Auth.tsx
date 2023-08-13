@@ -10,9 +10,9 @@ const Auth: FC<AuthProps> = ({ children }) => {
   const router = useRouter();
 
   return (
-    <div className='flex flex-col gap-10 text-lg w-1/4'>
+    <div className='flex flex-col gap-11 w-[400px]'>
       {children}
-      <div className='flex gap-3'>
+      <div className='flex gap-3 justify-center'>
         <span>
           {router.asPath === '/'
             ? "Don't have an account?"
