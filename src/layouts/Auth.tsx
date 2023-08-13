@@ -1,3 +1,5 @@
+// i dont understand why when im using this layout it doesnt work 🤔
+
 import { FC } from 'react';
 
 import { useRouter } from 'next/router';
@@ -10,7 +12,7 @@ const Auth: FC<AuthProps> = ({ children }) => {
   const router = useRouter();
 
   return (
-    <div className='flex flex-col gap-11 w-[400px]'>
+    <div className='flex flex-col gap-11 max-w-[400px] w-full'>
       {children}
       <div className='flex gap-3 justify-center'>
         <span>

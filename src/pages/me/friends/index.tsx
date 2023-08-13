@@ -85,24 +85,24 @@ export default function Friends({
 
   return (
     <MeLayout>
-      <div className='flex flex-col gap-8 w-[750px]'>
-        <div className='flex gap-4 justify-between'>
-          <input
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder='Friend You want to add username here...'
-            className='w-[80%] rounded border border-zinc-400 p-3 bg-none'
-          />
-          <button
-            onClick={onClickAddFriend}
-            disabled={username === ''}
-            className='flex-1 disabled:disabled:bg-gray-200 rounded text-white font-medium transition-[background-color] bg-sky-500 hover:bg-sky-600 p-2'
-          >
-            Add friend
-          </button>
-        </div>
-        <ul className='flex flex-col text-lg gap-9'>
-          {friendships.map((friendship) => (
+      <div className='flex gap-4 justify-between'>
+        <input
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          placeholder='Friend You want to add username here...'
+          className='w-[80%] rounded border border-zinc-400 p-3 bg-none'
+        />
+        <button
+          onClick={onClickAddFriend}
+          disabled={username === ''}
+          className='flex-1 disabled:disabled:bg-gray-200 rounded text-white font-medium transition-[background-color] bg-sky-500 hover:bg-sky-600 p-2'
+        >
+          Add friend
+        </button>
+      </div>
+      <ul className='flex flex-col text-lg gap-9'>
+        {friendships.length > 0 ? (
+          friendships.map((friendship) => (
             <div key={friendship.id}>
               <li className='uppercase underline decoration-wavy text-center mb-5'>
                 {friendship.addressee.username}
@@ -113,9 +113,11 @@ export default function Friends({
                 ))}
               </ul>
             </div>
-          ))}
-        </ul>
-      </div>
+          ))
+        ) : (
+          <p className='text-lg text-center'>You don't have any friends yet.</p>
+        )}
+      </ul>
     </MeLayout>
   );
 }

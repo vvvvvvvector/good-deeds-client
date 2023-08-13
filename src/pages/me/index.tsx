@@ -53,10 +53,8 @@ export default function Me({
 }) {
   return (
     <MeLayout>
-      <div className='flex flex-col gap-8 w-[750px]'>
-        <AddNewThing token={token} />
-        <ThingsList things={things} token={token} />
-      </div>
+      <AddNewThing token={token} />
+      <ThingsList things={things} token={token} />
     </MeLayout>
   );
 }

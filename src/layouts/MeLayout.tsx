@@ -10,7 +10,9 @@ const MeLayout: FC<MeProps> = ({ children }) => {
   return (
     <>
       <Header />
-      {children}
+      <div className='flex flex-col gap-8 box-border px-4 max-w-[750px] w-full'>
+        {children}
+      </div>
     </>
   );
 };

@@ -79,7 +79,7 @@ export default function SignUp() {
   };
 
   return (
-    <Auth>
+    <div className='flex flex-col gap-11 max-w-[400px] w-full'>
       <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col'>
         <div className='flex flex-col gap-2 min-h-[140px]'>
           <label htmlFor='username'>Username</label>
@@ -136,6 +136,15 @@ export default function SignUp() {
           Sign up 🚀
         </button>
       </form>
-    </Auth>
+      <div className='flex gap-3 justify-center'>
+        <span>Already have an account?</span>
+        <button
+          className='text-teal-500 hover:text-teal-600 hover:underline'
+          onClick={() => router.push('/')}
+        >
+          Sign in
+        </button>
+      </div>
+    </div>
   );
 }

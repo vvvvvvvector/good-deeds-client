@@ -33,6 +33,7 @@ const Header = () => {
           </ul>
         </div>
         <button
+          className='bg-transparent hover:bg-red-100 border border-red-500 rounded px-5 py-1 text-red-500 font-medium'
           onClick={async () => {
             const result = window.confirm('Are you sure you want to sign out?');
 

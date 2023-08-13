@@ -50,7 +50,7 @@ export default function SignIn() {
   };
 
   return (
-    <Auth>
+    <div className='flex flex-col gap-11 max-w-[400px] w-full'>
       <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col'>
         <div className='flex flex-col gap-2 min-h-[140px]'>
           <label htmlFor='email'>Email</label>
@@ -91,6 +91,15 @@ export default function SignIn() {
           Sign in 🚀
         </button>
       </form>
-    </Auth>
+      <div className='flex gap-3 justify-center'>
+        <span>Don't have an account?</span>
+        <button
+          className='text-teal-500 hover:text-teal-600 hover:underline'
+          onClick={() => router.push('/signup')}
+        >
+          Sign up
+        </button>
+      </div>
+    </div>
   );
 }
