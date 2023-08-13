@@ -8,6 +8,8 @@ import { z } from 'zod';
 
 import toast from 'react-hot-toast';
 
+import Auth from '@/layouts/Auth';
+
 const signUpValidationSchema = z.object({
   email: z
     .string()
@@ -77,7 +79,7 @@ export default function SignUp() {
   };
 
   return (
-    <div className='flex flex-col gap-10 text-lg w-1/4'>
+    <Auth>
       <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col'>
         <div className='flex flex-col gap-2 min-h-[140px]'>
           <label htmlFor='username'>Username</label>
@@ -127,21 +129,13 @@ export default function SignUp() {
           )}
         </div>
         <button
+          disabled={Object.keys(errors).length > 0}
           type='submit'
-          className='rounded text-white font-medium bg-teal-500 p-3'
+          className='rounded text-white transition-[background-color] disabled:bg-gray-200 font-medium bg-teal-500 hover:bg-teal-600 p-3'
         >
           Sign up 🚀
         </button>
       </form>
-      <div className='flex gap-3 justify-center'>
-        <span>Already have an account?</span>
-        <button
-          className='text-teal-500 hover:text-teal-600 hover:underline'
-          onClick={() => router.push('/')}
-        >
-          Sign in
-        </button>
-      </div>
-    </div>
+    </Auth>
   );
 }

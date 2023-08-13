@@ -6,7 +6,9 @@ import toast from 'react-hot-toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
-import { signIn, useSession } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
+
+import Auth from '@/layouts/Auth';
 
 const signInValidationSchema = z.object({
   email: z
@@ -48,7 +50,7 @@ export default function SignIn() {
   };
 
   return (
-    <div className='flex flex-col gap-10 text-lg w-1/4'>
+    <Auth>
       <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col'>
         <div className='flex flex-col gap-2 min-h-[140px]'>
           <label htmlFor='email'>Email</label>
@@ -82,21 +84,13 @@ export default function SignIn() {
           )}
         </div>
         <button
+          disabled={Object.keys(errors).length > 0}
           type='submit'
-          className='rounded text-white font-medium bg-teal-500 p-3'
+          className='rounded text-white transition-[background-color] disabled:bg-gray-200 font-medium bg-teal-500 hover:bg-teal-600 p-3'
         >
           Sign in 🚀
         </button>
       </form>
-      <div className='flex gap-3 justify-center'>
-        <span>Don't have an account?</span>
-        <button
-          className='text-teal-500 hover:text-teal-600 hover:underline'
-          onClick={() => router.push('/signup')}
-        >
-          Sign up
-        </button>
-      </div>
-    </div>
+    </Auth>
   );
 }
