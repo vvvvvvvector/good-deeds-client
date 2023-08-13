@@ -22,7 +22,7 @@ const Header = () => {
               onClick={() => router.push('/me/friends')}
               className='cursor-pointer hover:underline'
             >
-              My Friends
+              My friends things
             </li>
             <li
               onClick={() => router.push('/me/profile')}
