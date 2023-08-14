@@ -89,8 +89,29 @@ export default function Profile({
     },
   });
 
-  const onSubmit = (data: FieldValues) => {
-    console.log(data);
+  const onSubmit = async (data: FieldValues) => {
+    const id = toast.loading('Saving...');
+
+    try {
+      const response = await Api.users.updateMyProfile(
+        {
+          email: data.email,
+          username: data.username,
+          password: data.password,
+        },
+        token
+      );
+
+      if (response.message === 'success') {
+        toast.success('Your profile was successfully updated.', { id });
+      } else {
+        toast.error("Your profile was't updated. Error occured.", { id });
+      }
+    } catch (error) {
+      console.log(error);
+
+      toast.error('Error occured while updating Your profile.', { id });
+    }
   };
 
   const onClickDeleteProfile = async () => {

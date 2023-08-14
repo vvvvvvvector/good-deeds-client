@@ -20,11 +20,30 @@ export const deleteMyProfile = async (token: string) => {
   });
 };
 
-export const updateMyProfile = (
-  dto: {
+export const updateMyProfile = async (
+  {
+    email,
+    username,
+    password,
+  }: {
     email: string;
     username: string;
     password: string;
   },
   token: string
-) => {};
+) => {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      email,
+      username,
+      password,
+    }),
+  });
+
+  return await response.json();
+};
