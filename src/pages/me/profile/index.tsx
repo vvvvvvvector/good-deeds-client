@@ -14,7 +14,9 @@ import { z } from 'zod';
 
 import { toast } from 'react-hot-toast';
 
-import MeLayout from '@/layouts/MeLayout';
+import Me from '@/layouts/Me/Me';
+
+import styles from '@/styles/Forms.module.scss';
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getServerSession(req, res, authOptions);
@@ -133,60 +135,52 @@ export default function Profile({
   };
 
   return (
-    <MeLayout>
-      <h1 className='text-lg text-center'>{`Hello ${user.username}!`}</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col'>
-        <div className='flex flex-col gap-2 min-h-[130px]'>
+    <Me>
+      <h1>{`Hello ${user.username}!`}</h1>
+      <form className={styles.welcomeForm}>
+        <div>
           <label htmlFor=''>Username</label>
           <input
             {...register('username')}
             id='username'
             type='text'
-            className='rounded border border-zinc-400 p-3 bg-none'
+            className={`custom-input ${errors.username && 'error'}`}
           />
-          {errors.username && (
-            <p className='tracking-wide'>{errors.username.message}</p>
-          )}
+          {errors.username && <p>{errors.username.message}</p>}
         </div>
-        <div className='flex flex-col gap-2 min-h-[130px]'>
+        <div>
           <label htmlFor='email'>Email</label>
           <input
             {...register('email')}
             id='email'
             type='text'
-            className='rounded border border-zinc-400 p-3 bg-none'
+            className={`custom-input ${errors.email && 'error'}`}
           />
-          {errors.email && (
-            <p className='tracking-wide'>{errors.email.message}</p>
-          )}
+          {errors.email && <p>{errors.email.message}</p>}
         </div>
-        <div className='flex flex-col gap-2 min-h-[130px]'>
+        <div>
           <label htmlFor='password'>Password</label>
           <input
             {...register('password')}
             id='password'
             type='password'
             placeholder='New password here...'
-            className='rounded border border-zinc-400 p-3 bg-none'
+            className='custom-input'
           />
         </div>
-        <div className='flex justify-center'>
-          <button
-            type='submit'
-            className='w-[50%] rounded text-white transition-[background-color] disabled:bg-gray-200 font-medium bg-teal-500 hover:bg-teal-600 p-3'
-          >
-            Save
-          </button>
-        </div>
       </form>
-      <div className='flex justify-center'>
-        <button
-          onClick={onClickDeleteProfile}
-          className='w-[50%] rounded text-white transition-[background-color] font-medium bg-red-500 hover:bg-red-600 p-3'
-        >
-          Delete profile
-        </button>
-      </div>
-    </MeLayout>
+      <button
+        onClick={handleSubmit(onSubmit)}
+        className='custom-button filled green'
+      >
+        Save
+      </button>
+      <button
+        onClick={onClickDeleteProfile}
+        className='custom-button filled red'
+      >
+        Delete profile
+      </button>
+    </Me>
   );
 }

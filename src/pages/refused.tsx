@@ -1,3 +1,3 @@
 export default function Refused() {
-  return <h1 className='text-3xl font-bold'>You aren't signed in 😭</h1>;
+  return <h1>You aren't signed in 😭</h1>;
 }

@@ -1,0 +1,15 @@
+.friendships {
+  ul {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    gap: 2.25rem;
+  }
+
+  p {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    text-align: center;
+  }
+}

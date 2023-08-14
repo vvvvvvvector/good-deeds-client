@@ -8,7 +8,9 @@ import { z } from 'zod';
 
 import toast from 'react-hot-toast';
 
-import Auth from '@/layouts/Auth';
+import Auth from '@/layouts/Auth/Auth';
+
+import styles from '@/styles/Forms.module.scss';
 
 const signUpValidationSchema = z.object({
   email: z
@@ -79,72 +81,51 @@ export default function SignUp() {
   };
 
   return (
-    <div className='flex flex-col gap-11 max-w-[400px] w-full'>
-      <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col'>
-        <div className='flex flex-col gap-2 min-h-[140px]'>
+    <Auth>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.welcomeForm}>
+        <div>
           <label htmlFor='username'>Username</label>
           <input
             {...register('username', { required: true })}
             id='username'
             spellCheck='false'
             type='text'
-            className={`rounded border border-zinc-400 p-3 ${
-              errors.username ? 'border-red-500' : 'focus:border-teal-500'
-            } bg-none`}
+            className={`custom-input ${errors.username && 'error'}`}
             placeholder='goodthinger'
           />
-          {errors.username && (
-            <p className='tracking-wide'>{errors.username.message}</p>
-          )}
+          {errors.username && <p>{errors.username.message}</p>}
         </div>
-        <div className='flex flex-col gap-2 min-h-[140px]'>
+        <div>
           <label htmlFor='email'>Email</label>
           <input
             {...register('email', { required: true })}
             id='email'
             spellCheck='false'
             type='text'
-            className={`rounded border border-zinc-400 p-3 ${
-              errors.email ? 'border-red-500' : 'focus:border-teal-500'
-            } bg-none`}
+            className={`custom-input ${errors.email && 'error'}`}
             placeholder='goodthinger@io.com'
           />
-          {errors.email && (
-            <p className='tracking-wide'>{errors.email.message}</p>
-          )}
+          {errors.email && <p>{errors.email.message}</p>}
         </div>
-        <div className='flex flex-col gap-2 min-h-[140px]'>
+        <div>
           <label htmlFor='password'>Password</label>
           <input
             {...register('password', { required: true })}
             id='password'
             type='password'
-            className={`rounded border border-zinc-400 p-3 ${
-              errors.password ? 'border-red-500' : 'focus:border-teal-500'
-            } bg-none`}
+            className={`custom-input ${errors.password && 'error'}`}
             placeholder='super secret'
           />
-          {errors.password && (
-            <p className='tracking-wide'>{errors.password.message}</p>
-          )}
+          {errors.password && <p>{errors.password.message}</p>}
         </div>
         <button
           disabled={Object.keys(errors).length > 0}
           type='submit'
-          className='rounded text-white transition-[background-color] disabled:bg-gray-200 font-medium bg-teal-500 hover:bg-teal-600 p-3'
+          className='custom-button filled green'
         >
           Sign up 🚀
         </button>
       </form>
-      <div className='flex gap-3 justify-center'>
-        <span>Already have an account?</span>
-        <button
-          className='text-teal-500 hover:text-teal-600 hover:underline'
-          onClick={() => router.push('/')}
-        >
-          Sign in
-        </button>
-      </div>
-    </div>
+    </Auth>
   );
 }

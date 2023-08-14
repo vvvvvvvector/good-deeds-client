@@ -1,0 +1,16 @@
+.welcomeForm {
+  display: flex;
+  flex-direction: column;
+
+  div {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-height: 130px;
+
+    p {
+      letter-spacing: 0.025rem;
+    }
+  }
+}

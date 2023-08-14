@@ -1,0 +1,15 @@
+.thing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  span {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  div {
+    display: flex;
+    gap: 1.25rem;
+  }
+}

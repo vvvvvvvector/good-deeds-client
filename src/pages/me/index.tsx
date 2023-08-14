@@ -4,9 +4,11 @@ import { getServerSession } from 'next-auth';
 import * as Api from '@/pages/api';
 
 import { authOptions } from '@/pages/api/auth/[...nextauth]';
-import MeLayout from '@/layouts/MeLayout';
-import ThingsList from '@/components/ThingsList';
-import AddNewThing from '@/components/AddNewThing';
+
+import Me from '@/layouts/Me/Me';
+
+import ThingsList from '@/components/Things/Things';
+import AddNewThing from '@/components/AddNewThing/AddNewThing';
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getServerSession(req, res, authOptions);
@@ -41,7 +43,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   }
 };
 
-export default function Me({
+export default function Home({
   things,
   token,
 }: {
@@ -52,9 +54,9 @@ export default function Me({
   }[];
 }) {
   return (
-    <MeLayout>
+    <Me>
       <AddNewThing token={token} />
       <ThingsList things={things} token={token} />
-    </MeLayout>
+    </Me>
   );
 }

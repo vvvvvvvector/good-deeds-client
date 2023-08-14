@@ -1,0 +1,31 @@
+.header {
+  display: flex;
+  justify-content: center;
+  z-index: 9999;
+  width: 100%;
+  margin-bottom: 50px;
+  box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+
+  header {
+    width: 750px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.15rem 0;
+
+    div {
+      ul {
+        display: flex;
+        gap: 2rem;
+
+        li {
+          cursor: pointer;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}

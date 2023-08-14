@@ -6,6 +6,8 @@ import * as Api from '@/pages/api';
 
 import toast from 'react-hot-toast';
 
+import styles from './AddNewThing.module.scss';
+
 interface AddNewThingProps {
   token: string;
 }
@@ -29,16 +31,16 @@ const AddNewThing: FC<AddNewThingProps> = ({ token }) => {
   };
 
   return (
-    <div className='flex gap-4 justify-between'>
+    <div className={styles.container}>
       <input
         value={newThing}
         onChange={(e) => setNewThing(e.target.value)}
         placeholder='New good thing text here...'
-        className='w-[80%] rounded border border-zinc-400 p-3 bg-none'
+        className='custom-input add'
       />
       <button
         disabled={newThing.length === 0}
-        className='flex-1 disabled:disabled:bg-gray-200 rounded text-white font-medium transition-[background-color] bg-sky-500 hover:bg-sky-600 p-2'
+        className='custom-button filled green'
         onClick={() => {
           onClickAddNewThing(newThing);
 
