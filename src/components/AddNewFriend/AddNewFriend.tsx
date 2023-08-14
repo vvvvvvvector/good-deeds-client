@@ -25,7 +25,9 @@ const AddNewFriend: FC<AddNewFriendProps> = ({ token }) => {
 
       toast.success('New friend was successfully added.', { id });
 
-      router.replace(router.asPath);
+      router.replace(router.asPath, undefined, { scroll: false });
+
+      setUsername('');
     } catch (error: any) {
       console.log(error);
 

@@ -1,12 +1,11 @@
 import { FC } from 'react';
 
+import { IThing } from '@/types/shared';
+
 import styles from './FriendshipThings.module.scss';
 
 interface FriendshipThingsProps {
-  things: {
-    id: number;
-    text: string;
-  }[];
+  things: IThing[];
 }
 
 const FriendshipThings: FC<FriendshipThingsProps> = ({ things }) => {

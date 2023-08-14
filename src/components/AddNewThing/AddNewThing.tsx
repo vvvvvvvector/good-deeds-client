@@ -24,7 +24,7 @@ const AddNewThing: FC<AddNewThingProps> = ({ token }) => {
 
       toast.success('Thing was successfully added.', { id });
 
-      router.replace(router.asPath);
+      router.replace(router.asPath, undefined, { scroll: false });
     } catch (error) {
       toast.error('Error while adding thing.', { id });
     }

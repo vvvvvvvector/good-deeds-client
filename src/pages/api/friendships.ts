@@ -1,4 +1,8 @@
-export const getMyFriendsGoodThings = async (token: string) => {
+import { IFriendship } from '@/types/shared';
+
+export const getMyFriendsGoodThings = async (
+  token: string
+): Promise<IFriendship[]> => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/friendships`,
     {

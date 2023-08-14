@@ -89,10 +89,6 @@ h1 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   color: white;
-
-  :disabled {
-    background-color: var(--color-disabled);
-  }
 }
 
 .custom-button.outlined {
@@ -126,6 +122,11 @@ h1 {
   &:hover {
     background-color: var(--color-teal-600);
   }
+
+  &:disabled {
+    cursor: auto;
+    background-color: var(--color-disabled);
+  }
 }
 
 .custom-button.filled.red {
@@ -133,5 +134,10 @@ h1 {
 
   &:hover {
     background-color: var(--color-red-600);
+  }
+
+  &:disabled {
+    cursor: auto;
+    background-color: var(--color-disabled);
   }
 }

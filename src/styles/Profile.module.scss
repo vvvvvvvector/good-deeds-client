@@ -1,0 +1,20 @@
+.buttons {
+  display: flex;
+  justify-content: space-around;
+
+  @media (max-width: 675px) {
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  button:nth-of-type(1) {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  button:nth-of-type(2) {
+    width: 100%;
+    max-width: 300px;
+  }
+}

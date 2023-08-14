@@ -7,7 +7,9 @@ import { authOptions } from '@/pages/api/auth/[...nextauth]';
 
 import Me from '@/layouts/Me/Me';
 
-import ThingsList from '@/components/Things/Things';
+import { IThing } from '@/types/shared';
+
+import Things from '@/components/Things/Things';
 import AddNewThing from '@/components/AddNewThing/AddNewThing';
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
@@ -24,6 +26,10 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
   try {
     const things = await Api.things.getAllUserThings(session.user.token);
+
+    things.sort((a, b) => {
+      return a.id - b.id;
+    });
 
     return {
       props: {
@@ -48,15 +54,12 @@ export default function Home({
   token,
 }: {
   token: string;
-  things: {
-    id: number;
-    text: string;
-  }[];
+  things: IThing[];
 }) {
   return (
     <Me>
       <AddNewThing token={token} />
-      <ThingsList things={things} token={token} />
+      <Things things={things} token={token} />
     </Me>
   );
 }

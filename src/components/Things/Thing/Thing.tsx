@@ -4,6 +4,8 @@ import * as Api from '@/pages/api/';
 
 import { useRouter } from 'next/router';
 
+import { IThing } from '@/types/shared';
+
 import toast from 'react-hot-toast';
 
 import styles from './Thing.module.scss';
@@ -11,10 +13,7 @@ import styles from './Thing.module.scss';
 interface ThingProps {
   index: number;
   token: string;
-  thing: {
-    id: number;
-    text: string;
-  };
+  thing: IThing;
 }
 
 const Thing: FC<ThingProps> = ({ token, thing, index }) => {
@@ -31,7 +30,7 @@ const Thing: FC<ThingProps> = ({ token, thing, index }) => {
 
         toast.success('Thing was successfully updated.', { id });
 
-        router.replace(router.asPath);
+        router.replace(router.asPath, undefined, { scroll: false });
       } catch (error) {
         toast.error('Error while updating thing.', { id });
       }
@@ -45,7 +44,7 @@ const Thing: FC<ThingProps> = ({ token, thing, index }) => {
 
       toast.success('Thing was successfully deleted.', { id });
 
-      router.replace(router.asPath);
+      router.replace(router.asPath, undefined, { scroll: false });
     } catch (error) {
       toast.error('Error while deleting thing.', { id });
     }

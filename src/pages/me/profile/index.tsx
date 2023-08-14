@@ -16,7 +16,8 @@ import { toast } from 'react-hot-toast';
 
 import Me from '@/layouts/Me/Me';
 
-import styles from '@/styles/Forms.module.scss';
+import stylesForms from '@/styles/Forms.module.scss';
+import stylesProfile from '@/styles/Profile.module.scss';
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getServerSession(req, res, authOptions);
@@ -137,7 +138,7 @@ export default function Profile({
   return (
     <Me>
       <h1>{`Hello ${user.username}!`}</h1>
-      <form className={styles.welcomeForm}>
+      <form className={stylesForms.welcomeForm}>
         <div>
           <label htmlFor=''>Username</label>
           <input
@@ -169,18 +170,20 @@ export default function Profile({
           />
         </div>
       </form>
-      <button
-        onClick={handleSubmit(onSubmit)}
-        className='custom-button filled green'
-      >
-        Save
-      </button>
-      <button
-        onClick={onClickDeleteProfile}
-        className='custom-button filled red'
-      >
-        Delete profile
-      </button>
+      <div className={stylesProfile.buttons}>
+        <button
+          onClick={handleSubmit(onSubmit)}
+          className='custom-button filled green'
+        >
+          Save
+        </button>
+        <button
+          onClick={onClickDeleteProfile}
+          className='custom-button filled red'
+        >
+          Delete profile
+        </button>
+      </div>
     </Me>
   );
 }

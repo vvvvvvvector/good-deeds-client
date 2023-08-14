@@ -2,18 +2,10 @@ import { FC } from 'react';
 
 import styles from './Friendship.module.scss';
 import FriendshipThings from './FriendshipThings/FriendshipThings';
+import { IFriendship } from '@/types/shared';
 
 interface FriendshipProps {
-  friendship: {
-    id: number;
-    addressee: {
-      username: string;
-      things: {
-        id: number;
-        text: string;
-      }[];
-    };
-  };
+  friendship: IFriendship;
 }
 
 const Friendship: FC<FriendshipProps> = ({ friendship }) => {
@@ -26,7 +18,9 @@ const Friendship: FC<FriendshipProps> = ({ friendship }) => {
           things={friendship.addressee.things}
         />
       ) : (
-        <p>This friend don't have any things yet.</p>
+        <p>
+          <b>{friendship.addressee.username}</b> doesnt't have any things yet.
+        </p>
       )}
     </div>
   );

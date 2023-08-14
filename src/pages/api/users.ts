@@ -1,4 +1,6 @@
-export const getMyEmailAndUsername = async (token: string) => {
+export const getMyEmailAndUsername = async (
+  token: string
+): Promise<{ username: string; email: string }> => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/me`, {
     method: 'GET',
     headers: {

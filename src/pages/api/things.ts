@@ -1,4 +1,6 @@
-export const getAllUserThings = async (token: string) => {
+import { IThing } from '@/types/shared';
+
+export const getAllUserThings = async (token: string): Promise<IThing[]> => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/things`, {
     method: 'GET',
     headers: {

@@ -3,6 +3,12 @@
   justify-content: space-between;
   align-items: center;
 
+  @media (max-width: 650px) {
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
+
   span {
     font-size: 1.25rem;
     line-height: 1.75rem;

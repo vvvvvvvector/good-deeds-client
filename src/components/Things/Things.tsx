@@ -1,15 +1,14 @@
 import { FC } from 'react';
 
+import { IThing } from '@/types/shared';
+
 import Thing from './Thing/Thing';
 
 import styles from './Things.module.scss';
 
 interface ThingsProps {
   token: string;
-  things: {
-    id: number;
-    text: string;
-  }[];
+  things: IThing[];
 }
 
 const Things: FC<ThingsProps> = ({ things, token }) => {

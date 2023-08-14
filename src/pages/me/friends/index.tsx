@@ -8,6 +8,7 @@ import { authOptions } from '@/pages/api/auth/[...nextauth]';
 import Me from '@/layouts/Me/Me';
 import AddNewFriend from '@/components/AddNewFriend/AddNewFriend';
 import Friendships from '@/components/Friendships/Friendships';
+import { IFriendship } from '@/types/shared';
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = await getServerSession(req, res, authOptions);
@@ -49,16 +50,7 @@ export default function Friends({
   friendships,
 }: {
   token: string;
-  friendships: {
-    id: number;
-    addressee: {
-      username: string;
-      things: {
-        id: number;
-        text: string;
-      }[];
-    };
-  }[];
+  friendships: IFriendship[];
 }) {
   return (
     <Me>

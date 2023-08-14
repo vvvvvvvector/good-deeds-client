@@ -55,8 +55,6 @@ export default function SignUp() {
 
     const resjson = await res.json();
 
-    console.log(resjson);
-
     if (resjson.message === 'success') {
       const result = await signIn('credentials', {
         email: data.email,
